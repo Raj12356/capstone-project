@@ -8,7 +8,6 @@ interface User {
   name: string;
   email: string;
   role: "admin" | "manager" | "user" | "team member";
-  status: "active" | "inactive";
 }
 
 export default function AdminDashboard() {
@@ -48,11 +47,7 @@ export default function AdminDashboard() {
     fetch("/api/users")
       .then((res) => res.json())
       .then((data: User[]) => {
-        const updated = data.map((u) => ({
-          ...u,
-          status: u.status || "active",
-        }));
-        setUsers(updated);
+        setUsers(data);
       })
       .catch(() => setUsers([]));
   }, [router]);
@@ -69,20 +64,6 @@ export default function AdminDashboard() {
   const handleLogout = () => {
     localStorage.removeItem("currentUser");
     router.push("/login");
-  };
-
-  const toggleStatus = (email: string) => {
-    const updatedUsers = users.map((u) =>
-      u.email === email
-        ? {
-            ...u,
-            status: u.status === "active" ? "inactive" : "active",
-          }
-        : u
-    );
-
-    setUsers(updatedUsers);
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
   };
 
   return (
@@ -139,7 +120,6 @@ export default function AdminDashboard() {
                   <th>Name</th>
                   <th>Email</th>
                   <th>Role</th>
-                  <th>Status</th>
                 </tr>
               </thead>
 
@@ -149,24 +129,6 @@ export default function AdminDashboard() {
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.role}</td>
-
-                    <td>
-                      <button
-                        onClick={() => toggleStatus(user.email)}
-                        style={{
-                          background:
-                            user.status === "active" ? "green" : "gray",
-                          color: "white",
-                          border: "none",
-                          padding: "5px 10px",
-                          cursor: "pointer",
-                        }}
-                      >
-                        {user.status === "active"
-                          ? "Active"
-                          : "Inactive"}
-                      </button>
-                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -185,11 +147,13 @@ export default function AdminDashboard() {
 
                 await fetch("/api/categories", {
                   method: "POST",
+                  headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({ categories }),
                 });
 
                 await fetch("/api/labels", {
                   method: "POST",
+                  headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({ labels }),
                 });
 
@@ -201,17 +165,18 @@ export default function AdminDashboard() {
                 <input
                   value={categoryInput}
                   onChange={(e) => setCategoryInput(e.target.value)}
+                  placeholder="Enter category"
                 />
 
                 <button
                   type="button"
                   onClick={() => {
-                    if (!categoryInput) return;
+                    if (!categoryInput.trim()) return;
                     setCategories([...categories, categoryInput]);
                     setCategoryInput("");
                   }}
                 >
-                  Add
+                  Add Category
                 </button>
 
                 <ul>
@@ -225,7 +190,9 @@ export default function AdminDashboard() {
                             categories.filter((_, index) => index !== i)
                           )
                         }
-                      ></button>
+                      >
+                        Remove
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -236,17 +203,18 @@ export default function AdminDashboard() {
                 <input
                   value={labelInput}
                   onChange={(e) => setLabelInput(e.target.value)}
+                  placeholder="Enter label"
                 />
 
                 <button
                   type="button"
                   onClick={() => {
-                    if (!labelInput) return;
+                    if (!labelInput.trim()) return;
                     setLabels([...labels, labelInput]);
                     setLabelInput("");
                   }}
                 >
-                  Add
+                  Add Label
                 </button>
 
                 <ul>
@@ -256,12 +224,10 @@ export default function AdminDashboard() {
                       <button
                         type="button"
                         onClick={() =>
-                          setLabels(
-                            labels.filter((_, index) => index !== i)
-                          )
+                          setLabels(labels.filter((_, index) => index !== i))
                         }
                       >
-
+                        Remove
                       </button>
                     </li>
                   ))}
