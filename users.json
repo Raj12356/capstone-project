@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Admin",
+    "email": "admin@gmail.com",
+    "password": "admin123",
+    "role": "admin",
+    "id": 0
+  },
+  {
+    "id": 2,
+    "name": "gobi",
+    "email": "gobi@gmail.com",
+    "password": "gobi123",
+    "role": "user"
+  },
+  {
+    "id": 4,
+    "name": "john",
+    "email": "john@gmail.com",
+    "password": "john123",
+    "role": "user"
+  },
+  {
+    "id": 8,
+    "name": "raju",
+    "email": "raju@gmail.com",
+    "password": "raju123",
+    "role": "user"
+  },
+  {
+    "id": 9,
+    "name": "raj",
+    "email": "raj@gmail.com",
+    "password": "raj123",
+    "role": "manager"
+  },
+  {
+    "id": 10,
+    "name": "gokul",
+    "email": "gokul@gmail.com",
+    "password": "gokul123",
+    "role": "team member"
+  },
+  {
+    "id": 11,
+    "name": "ragav",
+    "email": "rag@gmail.com",
+    "password": "pass1234",
+    "role": "manager"
+  },
+  {
+    "id": 12,
+    "name": "visva",
+    "email": "vishva@gmail.com",
+    "password": "vishva123",
+    "role": "team member"
+  },
+  {
+    "id": 13,
+    "name": "rr",
+    "email": "rr@gmail.com",
+    "password": "rr123",
+    "role": "team member"
+  },
+  {
+    "id": 14,
+    "name": "ragav",
+    "email": "ragav1@gmail.com",
+    "password": "pass1234",
+    "role": "team member"
+  },
+  {
+    "id": 15,
+    "name": "ghost",
+    "email": "ghost@gmail.com",
+    "password": "1234",
+    "role": "team member"
+  }
+]

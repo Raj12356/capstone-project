@@ -1,0 +1,212 @@
+/* Page layout */
+.container {
+  padding: 25px;
+  background: linear-gradient(135deg, #eef2f7, #f8fafc);
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Header */
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #1e293b;
+}
+
+/* Summary cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: white;
+  padding: 18px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.cardTitle {
+  color: #64748b;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.cardValue {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 8px;
+  color: #0f172a;
+}
+
+/* Task list */
+.taskListTitle {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #1e293b;
+}
+
+/* Task card */
+.taskCard {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border-left: 5px solid transparent;
+}
+
+.taskCard:hover {
+  transform: translateY(-3px);
+  border-left: 5px solid #6366f1;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+/* Status badge */
+.status {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.inProgress {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.start {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.start:hover {
+  transform: scale(1.05);
+}
+
+.complete {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.complete:hover {
+  transform: scale(1.05);
+}
+
+/* Detail panel */
+.detailBox {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 320px;
+  background: white;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.closeBtn {
+  margin-top: 12px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* Scroll comments */
+.detailBox div {
+  max-height: 150px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Input */
+.detailBox input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  margin-top: 10px;
+  outline: none;
+}
+
+.detailBox input:focus {
+  border-color: #6366f1;
+}
+.dark {
+  background: #0f172a;
+  color: white;
+}
+
+.dark .card,
+.dark .taskCard,
+.dark .detailBox {
+  background: #1e293b;
+  color: white;
+}
+
+.dark input {
+  background: #334155;
+  color: white;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #111827;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
