@@ -110,7 +110,7 @@ export async function PATCH(req: NextRequest) {
       ...body,
     };
 
-    // 🔥 KEEP status & completed IN SYNC
+    // KEEP status & completed IN SYNC
     if (body.completed !== undefined) {
       updatedTask.status = body.completed ? "completed" : "pending";
     }

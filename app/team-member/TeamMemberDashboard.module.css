@@ -200,6 +200,17 @@
   color: white;
 }
 
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  .detailBox {
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
 .toast {
   position: fixed;
   bottom: 20px;

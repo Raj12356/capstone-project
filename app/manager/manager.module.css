@@ -303,3 +303,19 @@
   color: white;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+  .stats {
+    flex-direction: column;
+  }
+  .content {
+    flex-direction: column;
+  }
+}

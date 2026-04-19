@@ -15,7 +15,7 @@ export default function AuthCard({ title, children }: AuthCardProps) {
       <div className="absolute inset-0 bg-black/60"></div>
 
       {/* card */}
-      <div className="relative bg-white/10 backdrop-blur-md shadow-lg rounded-xl p-6 w-80">
+      <div className="relative bg-white/10 backdrop-blur-md shadow-lg rounded-xl p-4 sm:p-6 w-full max-w-sm">
         <h1 className="text-xl font-bold text-center mb-6 text-white">
           {title}
         </h1>
